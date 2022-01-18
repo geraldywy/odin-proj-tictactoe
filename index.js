@@ -167,8 +167,12 @@ const boardManager = (() => {
         if (turn !== gameManager.getTurn()) { // someone restarted during the sleep
           return;
         }
-        turnText.textContent = 'Go on, it\'s your move, remember you are: "X"'; // hardcoded player is always 'X',
+
         updateBoardState(res[0], res[1]);
+        checkWin();
+        if (!gameManager.isGameEnd()) {
+          turnText.textContent = 'Go on, it\'s your move, remember you are: "X"'; // hardcoded player is always 'X',
+        }
       }
     }
   };
